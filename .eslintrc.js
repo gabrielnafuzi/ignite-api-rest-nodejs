@@ -16,7 +16,10 @@ const config = {
   plugins: ['@typescript-eslint', 'eslint-plugin-import-helpers'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: [path.join(__dirname, 'tsconfig.json')],
+    project: [
+      path.join(__dirname, 'tsconfig.json'),
+      path.join(__dirname, 'tsconfig.build.json'),
+    ],
   },
   rules: {
     'import/no-anonymous-default-export': 'off',

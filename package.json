@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
+    "build": "tsc --project tsconfig.build.json",
+    "start": "pnpm build && node dist/server.js",
     "lint": "eslint src --ext .ts",
     "migration:create": "tsx src/scripts/create-migration.ts",
-    "migrate": "tsx src/database/migrate.ts"
+    "migrate": "tsx src/database/migrate.ts",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "Gabriel Moraes",

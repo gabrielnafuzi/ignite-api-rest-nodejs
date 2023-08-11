@@ -5,20 +5,12 @@
 
 import fastify from 'fastify'
 
-import { db } from './database'
 import { env } from './env'
+import { transactionsRoutes } from './routes/transactions'
 
 const app = fastify()
 
-app.get('/hello', async () => {
-  const transactions = await db
-    .selectFrom('transactions')
-    .selectAll()
-    .where('amount', '=', 1000)
-    .execute()
-
-  return transactions
-})
+app.register(transactionsRoutes, { prefix: '/transactions' })
 
 app
   .listen({
@@ -26,5 +18,5 @@ app
   })
   .then(() => {
     // eslint-disable-next-line no-console
-    console.log('HTTP Server Running!')
+    console.log(`🚀 Server listening on port ${env.PORT}`)
   })

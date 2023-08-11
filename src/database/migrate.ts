@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { FileMigrationProvider, type Kysely, Migrator } from 'kysely'
 import fs from 'node:fs/promises'
 import path from 'path'
@@ -22,7 +23,6 @@ export async function migrateToLatest<T>(
 
   results?.forEach((it) => {
     if (it.status === 'Success') {
-      // eslint-disable-next-line no-console
       console.log(`migration "${it.migrationName}" was executed successfully`)
     } else if (it.status === 'Error') {
       console.error(`failed to execute migration "${it.migrationName}"`)
@@ -34,6 +34,8 @@ export async function migrateToLatest<T>(
     console.error(error)
     process.exit(1)
   }
+
+  console.log('💫 Migrated successfully')
 
   await db.destroy()
 }

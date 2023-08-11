@@ -9,7 +9,9 @@ const envSchema = z.object({
 
 let env = process.env as unknown as z.infer<typeof envSchema>
 
-if (!!process.env.SKIP_ENV_VALIDATION === false) {
+const shouldSkipEnvValidation = process.env.SKIP_ENV_VALIDATION === 'true'
+
+if (!shouldSkipEnvValidation) {
   const result = envSchema.safeParse(process.env)
 
   if (result.success === false) {
