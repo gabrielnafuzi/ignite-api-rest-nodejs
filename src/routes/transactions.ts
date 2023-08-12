@@ -13,6 +13,8 @@ const createTransactionBodySchema = z.object({
   type: z.enum(['credit', 'debit']),
 })
 
+export type CreateTransactionBody = z.infer<typeof createTransactionBodySchema>
+
 const getTransactionParamsSchema = z.object({
   id: z.string(),
 })
