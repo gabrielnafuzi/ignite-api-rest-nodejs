@@ -15,7 +15,7 @@ const getDialect = () => {
   if (env.DATABASE_CLIENT === 'pg') {
     return new PostgresDialect({
       pool: new Pool({
-        database: env.DATABASE_URL,
+        connectionString: env.DATABASE_URL,
       }),
     })
   }
