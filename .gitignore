@@ -1,9 +1,16 @@
-*.log
-.DS_Store
+# Dependency directories
 node_modules
-dist
-db/app.db
+
+# Database
+db/*.db
+
+# Environment variables
 .env*
 !.env.example
 !.env.test.example
+
+# Build
 build
+
+# Mac files
+.DS_Store

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsc --project tsconfig.build.json",
+    "build": "tsup src !src/**/*.spec.* --out-dir build --tsconfig ./tsconfig.build.json",
     "start": "pnpm build && node dist/server.js",
     "lint": "eslint src --ext .ts",
     "migration:create": "tsx src/scripts/create-migration.ts",
@@ -34,6 +34,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "prettier": "^3.0.0",
     "supertest": "^6.3.3",
+    "tsup": "^7.2.0",
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
     "vitest": "^0.34.1"
